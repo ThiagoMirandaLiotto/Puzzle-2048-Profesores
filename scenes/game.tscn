@@ -311,3 +311,5 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button1" to="Grid" method="_on_button_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button2" to="Grid" method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button3" to="Grid" method="_on_button_3_pressed"]

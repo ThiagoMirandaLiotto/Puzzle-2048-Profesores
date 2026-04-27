@@ -27,7 +27,62 @@ const INFO_PODERES = {
 	"Limpieza de Gonzas": {
 		"descripcion": "Elimina a todos los numeros 2 del tablero",
 		"icono": preload("res://fotos/Poderes/Limpieza_Gonzas.png"),
-		"color": "d4f89a"
+		"color": "95da05"
+	},
+	"Movimiento Libre": {
+		"descripcion": "Intercambia de lugar cualquier ficha con cualquier otra.",
+		"icono": preload("res://fotos/Poderes/MovimientoLibre.png"),
+		"color": "53d180" 
+	},
+	"Fuerza Bruta": {
+		"descripcion": "Sube una ficha al siguiente nivel instantáneamente.",
+		"icono": preload("res://fotos/Poderes/FuerzaBruta.png"),
+		"color": "ff901c"
+	},
+	"El Martillo": {
+		"descripcion": "Rompe y elimina por completo una ficha molesta (3 usos).",
+		"icono": preload("res://fotos/Poderes/ElMartillo.png"),
+		"color": "61e0ef"
+	},
+	"Comodin": {
+		"descripcion": "Congela la PRESIÓN del tablero por 5 turnos.",
+		"icono": preload("res://fotos/Poderes/Comodin.png"),
+		"color": "6168b0" 
+	},
+	"Celda Anclada": {
+		"descripcion": "Protege una celda. No se moverá cuando ataque la Presión.",
+		"icono": preload("res://fotos/Poderes/ProteccionCelda.png"),
+		"color": "ba1a3b"
+	},
+	"Tornado": {
+		"descripcion": "Mezcla aleatoriamente las posiciones de todas las fichas.",
+		"icono": preload("res://fotos/Poderes/Tornado.png"),
+		"color": "d39e1c" 
+	},
+	"Fusión Cuántica": {
+		"descripcion": "Atrae a una esquina y fusiona todas las fichas de un mismo número.",
+		"icono": preload("res://fotos/Poderes/FusionCuantica.png"),
+		"color": "c52c6d" 
+	},
+	"Ampliamiento": {
+		"descripcion": "Agrega una nueva fila al tablero (5x5). Requiere elegirlo 2 veces.",
+		"icono": preload("res://fotos/Poderes/Ampliamientox1.png"), 
+		"color": "5934c2"
+	},
+	"Fuerza Bruta II": {
+		"descripcion": "Evoluciona todos los números iguales elegidos al siguiente nivel.",
+		"icono": preload("res://fotos/Poderes/FuerzaBrutaII.png"),
+		"color": "fd871b"
+	},
+	"Clonación": {
+		"descripcion": "Crea una copia idéntica de la ficha seleccionada en una celda vacía.",
+		"icono": preload("res://fotos/Poderes/Clonacion.png"),
+		"color": "1badac" 
+	},
+	"Blindaje Fila": {
+		"descripcion": "Protege tu mejor fila (la superior) contra el ataque de la Presión.",
+		"icono": preload("res://fotos/Poderes/BlindajeFila.png"),
+		"color": "c21d48" 
 	}
 	
 }
@@ -35,7 +90,7 @@ const INFO_PODERES = {
 
 #PODERES
 var numeros_descubiertos = [2]
-@onready var menu_poderes = $"../CanvasLayer/VBoxContainer/MenuPoderes"
+@onready var menu_poderes = $"../CanvasLayer/VBoxContainer"
 @onready var inventario = $"../CanvasLayer/PanelContainer/InventarioPoderes"
 @onready var btn_opcion_1 = $"../CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button1"
 @onready var btn_opcion_2 = $"../CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button2"
@@ -280,17 +335,34 @@ func is_game_over() -> bool:
 func mostrar_menu_poderes() -> void:
 	
 	menu_poderes.show()
-	var nombre_poder = "Limpieza de Gonzas"
-	var info = INFO_PODERES[nombre_poder]
-	
-	var layout = btn_opcion_1.get_node("LayoutInterno")
+	#con tdos los nombre los mezclo con shuffle
+	var nombres_poderes = INFO_PODERES.keys()
+	nombres_poderes.shuffle()
 		
-	layout.get_node("TextureRect").texture = info["icono"]
-	layout.get_node("TituloLabel").text = nombre_poder
-	layout.get_node("DescLabel").text = info["descripcion"]
+	var opciones = [nombres_poderes[0], nombres_poderes[1], nombres_poderes[2]]
+	var botones = [btn_opcion_1, btn_opcion_2, btn_opcion_3]
+				
+	for i in range(3):
+		var btn = botones[i]
+		var nombre = opciones[i]
+		var info = INFO_PODERES[nombre]
+			
+		var layout = btn.get_node("LayoutInterno")
+				
+		layout.get_node("TextureRect").texture = info["icono"]
+		layout.get_node("TituloLabel").text = nombre
+		layout.get_node("DescLabel").text = info["descripcion"]
 	
 func _on_button_1_pressed() -> void:
 	var nombre_poder = btn_opcion_1.get_node("LayoutInterno/TituloLabel").text
+	agregar_poder_al_inventario(nombre_poder)
+	
+func _on_button_2_pressed() -> void:
+	var nombre_poder = btn_opcion_2.get_node("LayoutInterno/TituloLabel").text
+	agregar_poder_al_inventario(nombre_poder)
+	
+func _on_button_3_pressed() -> void:
+	var nombre_poder = btn_opcion_3.get_node("LayoutInterno/TituloLabel").text
 	agregar_poder_al_inventario(nombre_poder)
 		
 func agregar_poder_al_inventario(nombre_poder: String) -> void:
