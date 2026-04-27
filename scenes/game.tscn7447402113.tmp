@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://g4ylx7u8jprp"]
+
+[ext_resource type="Script" uid="uid://b402drda3vs15" path="res://script/grid.gd" id="1_uwrxv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwrxv"]
+bg_color = Color(1, 0, 0, 0.46666667)
+
+[node name="Game" type="Node2D" unique_id=995362830]
+
+[node name="GridImaginario" type="Node2D" parent="." unique_id=1350030784]
+visible = false
+
+[node name="Tile" type="ColorRect" parent="GridImaginario" unique_id=1226288136]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="Tile2" type="ColorRect" parent="GridImaginario" unique_id=1100621690]
+offset_left = 110.0
+offset_right = 210.0
+offset_bottom = 100.0
+
+[node name="Tile3" type="ColorRect" parent="GridImaginario" unique_id=1997912800]
+offset_left = 220.0
+offset_right = 320.0
+offset_bottom = 100.0
+
+[node name="Tile4" type="ColorRect" parent="GridImaginario" unique_id=1968353524]
+offset_left = 330.0
+offset_right = 430.0
+offset_bottom = 100.0
+
+[node name="Grid" type="Node2D" parent="." unique_id=956869625]
+position = Vector2(50, 50)
+script = ExtResource("1_uwrxv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=855021255]
+
+[node name="PanelGameOver" type="PanelContainer" parent="CanvasLayer" unique_id=1312367471]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uwrxv")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelGameOver" unique_id=7311893]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 31
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
