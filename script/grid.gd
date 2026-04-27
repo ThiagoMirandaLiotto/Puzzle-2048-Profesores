@@ -35,11 +35,11 @@ const INFO_PODERES = {
 
 #PODERES
 var numeros_descubiertos = [2]
-@onready var menu_poderes = $"../CanvasLayer/MenuPoderes"
+@onready var menu_poderes = $"../CanvasLayer/VBoxContainer/MenuPoderes"
 @onready var inventario = $"../CanvasLayer/PanelContainer/InventarioPoderes"
-@onready var btn_opcion_1 = $"../CanvasLayer/MenuPoderes/HBoxContainer/Button1"
-@onready var btn_opcion_2 = $"../CanvasLayer/MenuPoderes/HBoxContainer/Button2"
-@onready var btn_opcion_3 = $"../CanvasLayer/MenuPoderes/HBoxContainer/Button3"
+@onready var btn_opcion_1 = $"../CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button1"
+@onready var btn_opcion_2 = $"../CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button2"
+@onready var btn_opcion_3 = $"../CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button3"
 
 
 #EL TABLERO
