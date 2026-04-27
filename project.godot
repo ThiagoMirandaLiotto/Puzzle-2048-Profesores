@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2048"
-run/main_scene="uid://g4ylx7u8jprp"
+run/main_scene="uid://ch43h3t5lp700"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

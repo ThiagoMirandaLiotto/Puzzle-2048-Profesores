@@ -1,6 +1,6 @@
 extends Node2D
 
-const TAMANIO = Vector2(4, 4)
+var TAMANIO = Vector2(4, 4)
 const TILE_TEXTURE = {
 	0: preload("res://fotos/ffffff.png"),
 	2: preload("res://fotos/2.png"),
@@ -104,6 +104,7 @@ var numeros_descubiertos = [2]
 @onready var label_advertencia = $"../CanvasLayer/LabelAdvertencia" 
 const MOVIMIENTOS_PARA_PRESION = 30
 var contadorMovimientos = 0
+var fila_blindada = false
 
 func _ready() -> void:
 	$"../CanvasLayer/PanelGameOver".hide()
@@ -396,7 +397,10 @@ func usar_poder_automatico(nombre_poder: String, boton_usado: Button) -> void:
 			exito = poder_tornado()
 		"Comodin":
 			exito = poder_comodin()
-			
+		"Blindaje Fila":
+			exito = poder_blindaje_fila()
+		"Ampliamiento":
+			exito = poder_ampliamiento()
 		_:		
 			return 
 			
@@ -444,6 +448,38 @@ func poder_comodin() -> bool:
 		contadorMovimientos = 0
 			
 	return true
+func poder_blindaje_fila() -> bool:
+	return true
+func poder_ampliamiento() -> bool:
+	if TAMANIO.x >= 5:
+		return false
+	var botones_ampliamiento = []
+	for hijo in inventario.get_children():
+		if hijo.text == "Ampliamiento":
+			botones_ampliamiento.append(hijo)
+			
+	#NECESITAS DOS PAARA CONSEGUIRLO
+	if botones_ampliamiento.size() < 2:
+		print("Te falta 1 carga de ampliamiento más!")
+		return false
+			
+	for y in range(TAMANIO.y):
+		grid[y].append(0)
+		
+	grid.append([0, 0, 0, 0, 0])
+	TAMANIO = Vector2(5, 5)
+	tablero_ui.columns = 5
+	var escena_tile = preload("res://scenes/tile.tscn")
+	for i in range(9):
+		var nueva_celda = escena_tile.instantiate()
+		tablero_ui.add_child(nueva_celda)
+		
+		
+		
+				
+			
+	botones_ampliamiento[1].queue_free()
+	return true
 
 func hayMovimientosPosibles() -> bool:
 	for row in range(TAMANIO.y):
@@ -456,3 +492,7 @@ func hayMovimientosPosibles() -> bool:
 			if grid[row][col] == grid[row + 1][col]:
 				return true
 	return false
+
+
+func _on_button_pressed() -> void:
+	get_tree().reload_current_scene()

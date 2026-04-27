@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://g4ylx7u8jprp"]
 
 [ext_resource type="Script" uid="uid://b402drda3vs15" path="res://script/grid.gd" id="1_uwrxv"]
-[ext_resource type="Texture2D" path="res://fotos/Limpieza_Gonzas.png" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cf64lf6s2nxs1" path="res://scenes/tile.tscn" id="2_yqjtg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwrxv"]
 bg_color = Color(1, 0, 0, 0.46666667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+bg_color = Color(0, 0.0014758409, 0.00033109038, 1)
+shadow_size = 3
+shadow_offset = Vector2(3, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnu2h"]
 corner_radius_top_right = 13
@@ -29,8 +33,8 @@ corner_radius_bottom_right = 13
 corner_radius_bottom_left = 13
 expand_margin_left = 11.0
 expand_margin_top = 11.0
-expand_margin_right = 400.0
-expand_margin_bottom = 88.0
+expand_margin_right = 520.0
+expand_margin_bottom = 200.0
 
 [node name="Game" type="Node2D" unique_id=995362830]
 metadata/_edit_horizontal_guides_ = [25.0]
@@ -42,27 +46,40 @@ script = ExtResource("1_uwrxv")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=855021255]
 
 [node name="PanelGameOver" type="PanelContainer" parent="CanvasLayer" unique_id=1312367471]
-visible = false
+z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -190.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uwrxv")
 
-[node name="Label" type="Label" parent="CanvasLayer/PanelGameOver" unique_id=7311893]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelGameOver" unique_id=1553327525]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelGameOver/VBoxContainer" unique_id=7311893]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 51
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button" type="Button" parent="CanvasLayer/PanelGameOver/VBoxContainer" unique_id=1903264184]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
+text = "VOLVER A JUGAR"
+
 [node name="LabelAdvertencia2" type="Label" parent="CanvasLayer" unique_id=1916233092]
 offset_left = 193.0
-offset_top = 563.0
+offset_top = 573.0
 offset_right = 355.0
-offset_bottom = 610.0
+offset_bottom = 620.0
 theme_override_colors/font_color = Color(1, 0.2627451, 0, 1)
 theme_override_colors/font_outline_color = Color(0.8552034, 0.43546957, 0.26318407, 1)
 theme_override_constants/outline_size = 2
@@ -71,10 +88,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LabelAdvertencia" type="Label" parent="CanvasLayer" unique_id=30973091]
-offset_left = 251.0
-offset_top = 590.0
-offset_right = 332.0
-offset_bottom = 641.0
+offset_left = 232.0
+offset_top = 597.0
+offset_right = 313.0
+offset_bottom = 648.0
 theme_override_colors/font_color = Color(1, 0.2627451, 0, 1)
 theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
@@ -82,16 +99,16 @@ vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=647692004]
 offset_left = 20.0
-offset_top = 551.0
+offset_top = 559.0
 offset_right = 553.0
-offset_bottom = 573.0
+offset_bottom = 581.0
 color = Color(1, 0.2627451, 0, 0)
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=54924790]
-offset_left = 564.0
-offset_top = 20.0
-offset_right = 939.0
-offset_bottom = 596.0
+offset_left = 566.0
+offset_top = 26.0
+offset_right = 941.0
+offset_bottom = 602.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lnu2h")
 
 [node name="InventarioPoderes" type="VBoxContainer" parent="CanvasLayer/PanelContainer" unique_id=61736744]
@@ -141,7 +158,6 @@ theme_override_constants/separation = 4
 custom_minimum_size = Vector2(115, 115)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("2_lnu2h")
 expand_mode = 1
 stretch_mode = 5
 
@@ -247,69 +263,70 @@ theme_override_constants/v_separation = 7
 columns = 4
 
 [node name="Tile" parent="FondoTablero/TableroUI" unique_id=506216051 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile2" parent="FondoTablero/TableroUI" unique_id=902196569 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile3" parent="FondoTablero/TableroUI" unique_id=1410841660 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile4" parent="FondoTablero/TableroUI" unique_id=1669790490 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile5" parent="FondoTablero/TableroUI" unique_id=392716601 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile6" parent="FondoTablero/TableroUI" unique_id=308692777 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile7" parent="FondoTablero/TableroUI" unique_id=1092608219 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile8" parent="FondoTablero/TableroUI" unique_id=1059685497 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile9" parent="FondoTablero/TableroUI" unique_id=1685199898 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile10" parent="FondoTablero/TableroUI" unique_id=1482102376 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile11" parent="FondoTablero/TableroUI" unique_id=668953468 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile12" parent="FondoTablero/TableroUI" unique_id=774454960 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile13" parent="FondoTablero/TableroUI" unique_id=192153850 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile14" parent="FondoTablero/TableroUI" unique_id=1562915504 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile15" parent="FondoTablero/TableroUI" unique_id=27522541 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
 [node name="Tile16" parent="FondoTablero/TableroUI" unique_id=1156480187 instance=ExtResource("2_yqjtg")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
+[connection signal="pressed" from="CanvasLayer/PanelGameOver/VBoxContainer/Button" to="Grid" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button1" to="Grid" method="_on_button_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button2" to="Grid" method="_on_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MenuPoderes/HBoxContainer/Button3" to="Grid" method="_on_button_3_pressed"]
