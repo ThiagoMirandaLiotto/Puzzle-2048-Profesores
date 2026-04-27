@@ -24,6 +24,11 @@ var grid := [
 ]
 #BASE DE DATOS DE LOS PODERES
 const INFO_PODERES = {
+	"Limpieza de Gonzas": {
+		"descripcion": "Elimina a todos los numeros 2 del tablero",
+		"icono": preload("res://fotos/Poderes/Limpieza_Gonzas.png"),
+		"color": "d4f89a"
+	}
 	
 }
 
@@ -275,16 +280,34 @@ func is_game_over() -> bool:
 func mostrar_menu_poderes() -> void:
 	
 	menu_poderes.show()
-	btn_opcion_1.text = "Limpieza de Gonzas"
+	var nombre_poder = "Limpieza de Gonzas"
+	var info = INFO_PODERES[nombre_poder]
+	
+	var layout = btn_opcion_1.get_node("LayoutInterno")
+		
+	layout.get_node("TextureRect").texture = info["icono"]
+	layout.get_node("TituloLabel").text = nombre_poder
+	layout.get_node("DescLabel").text = info["descripcion"]
+	
 func _on_button_1_pressed() -> void:
-	agregar_poder_al_inventario(btn_opcion_1.text)
+	var nombre_poder = btn_opcion_1.get_node("LayoutInterno/TituloLabel").text
+	agregar_poder_al_inventario(nombre_poder)
 		
 func agregar_poder_al_inventario(nombre_poder: String) -> void:
 	menu_poderes.hide() 
+	var info = INFO_PODERES[nombre_poder]
+		
 	var nuevo_boton_poder = Button.new()
 	nuevo_boton_poder.text = nombre_poder
 	nuevo_boton_poder.custom_minimum_size = Vector2(150, 50)
-			
+	
+				
+	nuevo_boton_poder.add_theme_color_override("font_color", Color(info["color"]))
+	
+	nuevo_boton_poder.icon = info["icono"]
+	nuevo_boton_poder.expand_icon = true #lo hago desde el codigo en ves de la interfaz visual
+	nuevo_boton_poder.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	
 	if nombre_poder == "Limpieza de Gonzas":
 		nuevo_boton_poder.pressed.connect(usar_limpieza_gonzas.bind(nuevo_boton_poder)) 
 		

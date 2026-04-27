@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://g4ylx7u8jprp"]
 
 [ext_resource type="Script" uid="uid://b402drda3vs15" path="res://script/grid.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" path="res://fotos/Limpieza_Gonzas.png" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cf64lf6s2nxs1" path="res://scenes/tile.tscn" id="2_yqjtg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwrxv"]
@@ -96,6 +97,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lnu2h")
 layout_mode = 2
 
 [node name="MenuPoderes" type="PanelContainer" parent="CanvasLayer" unique_id=834822875]
+visible = false
 custom_minimum_size = Vector2(450, 300)
 anchors_preset = -1
 anchor_left = 0.25300002
@@ -112,17 +114,115 @@ layout_mode = 2
 [node name="Button1" type="Button" parent="CanvasLayer/MenuPoderes/HBoxContainer" unique_id=1848899709]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-text = "PODER 1"
+expand_icon = true
 
-[node name="Button2" type="Button" parent="CanvasLayer/MenuPoderes/HBoxContainer" unique_id=328602996]
+[node name="LayoutInterno" type="VBoxContainer" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button1" unique_id=523920848]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.03
+anchor_right = 0.95
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button1/LayoutInterno" unique_id=1776526856]
+custom_minimum_size = Vector2(115, 115)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_lnu2h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TituloLabel" type="Label" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button1/LayoutInterno" unique_id=312322529]
+layout_mode = 2
+autowrap_mode = 3
+uppercase = true
+
+[node name="DescLabel" type="Label" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button1/LayoutInterno" unique_id=1448858324]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 3
+
+[node name="Button2" type="Button" parent="CanvasLayer/MenuPoderes/HBoxContainer" unique_id=1079769515]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-text = "PODER 1"
+expand_icon = true
 
-[node name="Button3" type="Button" parent="CanvasLayer/MenuPoderes/HBoxContainer" unique_id=1455228406]
+[node name="LayoutInterno" type="VBoxContainer" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button2" unique_id=2112142493]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.03
+anchor_right = 0.95
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button2/LayoutInterno" unique_id=127898954]
+custom_minimum_size = Vector2(115, 115)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TituloLabel" type="Label" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button2/LayoutInterno" unique_id=2116394643]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 0
+autowrap_mode = 3
+uppercase = true
+
+[node name="DescLabel" type="Label" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button2/LayoutInterno" unique_id=723490330]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 3
+
+[node name="Button3" type="Button" parent="CanvasLayer/MenuPoderes/HBoxContainer" unique_id=661751934]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-text = "PODER 1"
+expand_icon = true
+
+[node name="LayoutInterno" type="VBoxContainer" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button3" unique_id=641706712]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.03
+anchor_right = 0.95
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button3/LayoutInterno" unique_id=1680134820]
+custom_minimum_size = Vector2(115, 115)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TituloLabel" type="Label" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button3/LayoutInterno" unique_id=1332330029]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 0
+autowrap_mode = 3
+uppercase = true
+
+[node name="DescLabel" type="Label" parent="CanvasLayer/MenuPoderes/HBoxContainer/Button3/LayoutInterno" unique_id=701355374]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 3
 
 [node name="FondoTablero" type="PanelContainer" parent="." unique_id=754853869]
 offset_left = 20.0
