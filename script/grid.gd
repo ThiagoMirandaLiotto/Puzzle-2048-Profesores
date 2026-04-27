@@ -380,25 +380,70 @@ func agregar_poder_al_inventario(nombre_poder: String) -> void:
 	nuevo_boton_poder.expand_icon = true #lo hago desde el codigo en ves de la interfaz visual
 	nuevo_boton_poder.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	
-	if nombre_poder == "Limpieza de Gonzas":
-		nuevo_boton_poder.pressed.connect(usar_limpieza_gonzas.bind(nuevo_boton_poder)) 
+	nuevo_boton_poder.pressed.connect(usar_poder_automatico.bind(nombre_poder, nuevo_boton_poder))
 		
 	inventario.add_child(nuevo_boton_poder)
 	
+		
+func usar_poder_automatico(nombre_poder: String, boton_usado: Button) -> void:
+	var exito = false
 	
+	#MATCH es como Switch enn JAVA
+	match nombre_poder:
+		"Limpieza de Gonzas":
+			exito = usar_limpieza_gonzas()
+		"Tornado":
+			exito = poder_tornado()
+		"Comodin":
+			exito = poder_comodin()
+			
+		_:		
+			return 
+			
+	if exito:
+		update_visuals()
+		boton_usado.queue_free() 
 			
 	
-func usar_limpieza_gonzas(boton_usado : Button) -> void:
+func usar_limpieza_gonzas() -> bool:
 	var exito = false
 	for y in range(TAMANIO.y):
 		for x in range(TAMANIO.x):
 			if grid[y][x] == 2:
 				grid[y][x] = 0
 				exito = true
-				
-	if exito:
-		update_visuals()
-		boton_usado.queue_free()
+	return exito
+	#if exito:
+	#	update_visuals()
+	#	boton_usado.queue_free()
+func poder_tornado() -> bool:
+	
+	var valores_guardados = []
+	var todas_las_posiciones = []
+	#1 recorremos fichas y las guardamois
+	for y in range(TAMANIO.y):
+		for x in range(TAMANIO.x):
+			todas_las_posiciones.append(Vector2i(x, y)) 
+								
+			if grid[y][x] != 0:
+				valores_guardados.append(grid[y][x])
+				grid[y][x] = 0 # vaciamos la celda
+	
+	#2 random
+	todas_las_posiciones.shuffle()
+	
+	# 3 vvolvemos a colocar los valores en las nuevas posiciones aleatorias
+	for i in range(valores_guardados.size()):
+		var pos_azar = todas_las_posiciones[i]
+		grid[pos_azar.y][pos_azar.x] = valores_guardados[i]
+		
+	return true
+func poder_comodin() -> bool:
+	contadorMovimientos -= 5
+	if contadorMovimientos < 0:
+		contadorMovimientos = 0
+			
+	return true
 
 func hayMovimientosPosibles() -> bool:
 	for row in range(TAMANIO.y):
