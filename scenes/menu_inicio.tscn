@@ -52,7 +52,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "POLI 2048 - Edicion Profesores"
 
 [node name="Label2" type="Label" parent="ContenedorMenu" unique_id=137526389]
@@ -60,13 +60,21 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 18
+
+[node name="Button2" type="Button" parent="ContenedorMenu" unique_id=199852096]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 23
+text = "Como jugar?"
 
 [node name="Button" type="Button" parent="ContenedorMenu" unique_id=1162041045]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 22
 text = "Jugar"
 
+[connection signal="pressed" from="ContenedorMenu/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="ContenedorMenu/Button" to="." method="_on_button_pressed"]

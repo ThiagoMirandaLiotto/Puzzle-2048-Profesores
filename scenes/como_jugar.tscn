@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://crt7nj4pkmae4"]
+
+[ext_resource type="Script" uid="uid://bihcmpuqugtby" path="res://scenes/como_jugar.gd" id="1_63oqr"]
+[ext_resource type="Texture2D" uid="uid://ckp8y2vvvb2pr" path="res://fotos/fondo-menu.jpg" id="1_pnxii"]
+
+[node name="comoJugar" type="Control" unique_id=519818849]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_63oqr")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=395849862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pnxii")
+expand_mode = 1
+stretch_mode = 6
+flip_h = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1430041475]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.011764706, 0.011764706, 0.37254903)
+
+[node name="Button2" type="Button" parent="." unique_id=556272495]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 0
+offset_left = 53.0
+offset_top = 39.0
+offset_right = 169.66666
+offset_bottom = 74.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 19
+text = "Volver"
+
+[node name="ContenedorMenu" type="VBoxContainer" parent="." unique_id=202529954]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -105.0
+offset_right = 337.23242
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="ContenedorMenu" unique_id=979002850]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 40
+text = "Instrucciones"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ContenedorMenu" unique_id=822741337]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 18
+text = "El juego es como el clásico 2048: usas las flechitas del teclado para deslizar todas las fichas al mismo tiempo.
+PRESION: 
+Aca viene la parte dificil: cada cierta cantidad de movimientos, el tablero va a ser empujado hacia arriba y vas a perder por completo tu fila superior. El juego te va a avisar unos turnos antes con un texto rojo para que te prepares. Tenes que armar tu estrategia pensando en que cada tanto vas a perder espacio.
+PODERES: 
+Para ayudarte a sobrevivir, cada vez que descubras un número nuevo por primera vez en la partida, el juego se va a pausar y te va a dar a elegir un Poder especial. Esos poderes se guardan en tu inventario a la izquierda de la pantalla. Cuando te quedes atascado o la Presión esté por arruinarte la partida, simplemente usá el mouse para hacer clic en tus poderes y safar del problema. Usalos con inteligencia!"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="ContenedorMenu" unique_id=1000441976]
+visible = false
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 22
+text = "Jugar"
+
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

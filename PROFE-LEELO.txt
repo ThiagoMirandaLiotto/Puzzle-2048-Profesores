@@ -1,0 +1,44 @@
+RESEÑA DEL PROYECTO
+
+Como se juega?
+El juego es como el clásico 2048: usas las flechitas del teclado para deslizar todas las fichas al mismo tiempo.
+PRESION: 
+Aca viene la parte dificil: cada cierta cantidad de movimientos, el tablero va a ser empujado hacia arriba y vas a 
+perder por completo tu fila superior. El juego te va a avisar unos turnos antes con un texto rojo para que te prepares. 
+Tenes que armar tu estrategia pensando en que cada tanto vas a perder espacio.
+PODERES: 
+Para ayudarte a sobrevivir, cada vez que descubras un número nuevo por primera vez en la partida, el juego se va a pausar y 
+te va a dar a elegir un Poder especial. Esos poderes se guardan en tu inventario a la izquierda de la pantalla. Cuando te quedes 
+atascado o la Presión esté por arruinarte la partida, simplemente usá el mouse para hacer clic en tus poderes y safar del problema. 
+
+DIVERSION:
+Siento que el juego es divertido por la facilidad de entenderlo y por lo nuevo que tiene a compracion de los demas 2048:
+- Cada numero es un profesor del Politecnico distinto, cualquiera que vaya al poli querrá saber cual es el siguiente profesor, esto te dá
+más ganas de avanzar en el juego.
+- La constante amenaza de la "Presión" te obliga a salir del modo automático y pensar a futuro, algo que el clásico no tiene. Al mismo tiempo, 
+el sistema de "Poderes" equilibra esa dificultad dándote el control para armar tus propias estrategias, por ejempplo: 
+la sensación que te puede generar salvar una partida perdida usando el "Tornado" cuando estás acorralado, o cuando estas acorralado y apunto de
+perder, y usas el poder de Limpieza de Gonzas, y se eliminan todos los Gonzas del tablero.
+
+SERÍA MAS DIVVERTIDO:
+Si hubiera llegado a terminar todos los poderes, pero prioricé este documento y la animacion de cada movimiento (el cual me tuve que ver varios videos de Youtube
+para aprender TWEEN) que es lo que hice hoy, aunque no llega a ser animacion (solo palpita). Podrás ver lo que iba a hacer cada poder en la descripcion del mismo en el juego. Ños poderes que me faltaron terminar
+son todos los que no se hacen de forma automatica (los que el usuario tiene que clickear alguna celda), el problema de estos es que me iba a llevar mas tiempo aún, ya
+que los dividí los poderes en automaticos y manuales, lo cual tendría que crear todos el sistema de metodos para lo manuales desde 0, luego lo de los clicks lo iba a 
+resolver mediante botones dentro de cada celda (que rellene todo el espacio de ella). 
+Y si hubiera conseguido ANIMAR los movimientos de forma fluida, creo quye sería aún más divertido. No lo pude haceer porque ya arranqué a hacer todas las celdas con GridContainer 
+que bloquea las fichas en posiciones fijas, impidiendo que un Tween las deslice libremente de una celda a otra. Aparte de que mi codigo no tiene recorrido, es como que la teletrasporta al lugar directamente.
+
+BUGS/COMPLICACIONES:
+- Al principio, no sabía la existencia de HBoxConteiner, solo utilizaba VBox, entonces cualquier tipo de daato o elemento que queria poner en una fila de forma horizontal,
+no podía, y me trataba de buscar la forma mas "linda" que quede.
+- Otra complicacion que me pasó, es que yo arranqué el juego con un tutorial de Youtube, el cual creaba todas las matrices por codigo directamente, todo matematico, hasta ponía y configuraba todas las
+propiedades de las celdas por es Script. Lo cual luego de casi terminar, me puse a recapacitar que estaba haciendo cosas que podía implementarlas de forma Visual (mediante la Interfaz) mucho mas facil.
+- Y la complicacion que no pude solucionar es la de la Animacion por movimiento, ya que arranqué utilizando GridConteiner, y no tenía tiempo para
+rehacer todo, aparte no me alcanzó el tiempo para tdos los poderes, menos para rehacer toda la lógica de nuevo.
+
+FUENTES UTILIZADAS:
+IA para las imagenes (usted me dijo que no habia problema, aunque intente buscar assets (no encontré ninguno que encaje con mis poderes)
+Videos de Youtube.
+https://docs.godotengine.org/es/4.x/
+Y de algunos foros de internet.

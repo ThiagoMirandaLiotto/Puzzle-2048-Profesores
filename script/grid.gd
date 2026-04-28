@@ -120,14 +120,23 @@ func update_visuals() -> void:
 			var tile_node = tablero_ui.get_child(index) 
 			
 			var foto_nodo = tile_node.get_node("TextureRect")
-			foto_nodo.texture = TILE_TEXTURE[valor]
+			var label_nodo = tile_node.get_node("Label")
 			
+			var valor_viejo = label_nodo.text
+			
+			foto_nodo.texture = TILE_TEXTURE[valor]
 			if valor == 0:
-				tile_node.get_node("Label").text = ""
+				label_nodo.text = ""
 			else:
-				tile_node.get_node("Label").text = str(valor)
+				label_nodo.text = str(valor)
+						
+			if str(valor) != valor_viejo and valor != 0:
+				var tween = create_tween()
+				tween.tween_property(foto_nodo, "scale", Vector2(1.15, 1.15), 0.08)
+				tween.tween_property(foto_nodo, "scale", Vector2(1.0, 1.0), 0.1)
 				
 			index += 1
+					
 func spawn_new_tile() -> bool:
 	var celda_vacia: Array[Vector2i] = []
 	for y in range(TAMANIO.y):

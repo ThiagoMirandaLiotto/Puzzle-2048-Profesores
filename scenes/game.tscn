@@ -46,6 +46,7 @@ script = ExtResource("1_uwrxv")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=855021255]
 
 [node name="PanelGameOver" type="PanelContainer" parent="CanvasLayer" unique_id=1312367471]
+visible = false
 z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
